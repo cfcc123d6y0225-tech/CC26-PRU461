@@ -1,8 +1,13 @@
 import json
+from pathlib import Path
 import numpy as np
 from model_loader import model
 
-with open("metadata/label_mapping.json", "r", encoding="utf-8") as f:
+BASE_DIR = Path(__file__).resolve().parent
+
+LABEL_PATH = BASE_DIR / "metadata" / "label_mapping.json"
+
+with open(LABEL_PATH, "r", encoding="utf-8") as f:
     LABELS = json.load(f)
 
 

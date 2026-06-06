@@ -14,6 +14,10 @@ class PredictionRequest(BaseModel):
 def root():
     return {"message": "AI Service Running"}
 
+@app.get("/health")
+def health():
+    return {"status": "ok", "service": "fastapi"}
+
 
 @app.post("/predict")
 def predict(request: PredictionRequest):

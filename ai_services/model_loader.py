@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import tensorflow as tf
 import keras
 from keras import layers
@@ -33,7 +35,9 @@ class FeatureInteractionLayer(layers.Layer):
 # =========================
 # Model Path
 # =========================
-MODEL_PATH = "models/best_model_patched.keras"
+BASE_DIR = Path(__file__).resolve().parent
+
+MODEL_PATH = BASE_DIR / "models" / "best_model_patched.keras"
 
 
 # =========================
