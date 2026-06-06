@@ -1,9 +1,16 @@
 import axios from "axios";
 
-export const predictMajor = async (featureVector) => {
-  const response = await axios.post("http://127.0.0.1:8000/predict", {
-    features: featureVector,
-  });
+const AI_SERVICE_URL = process.env.AI_SERVICE_URL;
 
-  return response.data;
+export const predictMajor = async (featureVector) => {
+  try {
+    const response = await axios.post(`${AI_SERVICE_URL}/predict`, {
+      features: featureVector,
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error("AI Service Error:", error.message);
+    throw error;
+  }
 };
